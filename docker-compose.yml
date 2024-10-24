@@ -3,6 +3,6 @@ services:
   app:
     image: guardiankiller/studentapp:latest
     ports:
-      - "8082:8082" # Map port 3030 on the host to port 3030 in the container
+      - "8082:8081" # Map port 3030 on the host to port 3030 in the container
     environment:
       - NODE_ENV=production
