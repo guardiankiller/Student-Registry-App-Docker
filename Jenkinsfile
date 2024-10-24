@@ -1,10 +1,24 @@
 pipeline {
    agent any
    stages {  
-      stage('Build') {
+      stage('NPM Install') {
          steps {
-            echo 'Hello World'
+            bat 'npm install'
          }
+      }
+      stage('Parallel Execution') {
+          parallel {
+            stage('Run npm audit tests') {
+                steps {
+                    bat 'npm audit'
+                }
+            }
+            stage('Execute tests') {
+                steps {
+                    bat 'npm test'
+                }
+            }
+          }
       }
    }
 }
